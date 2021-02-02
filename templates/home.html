@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoit</title>
+    <link rel="stylesheet" href="/static/ css/styles.css" />
+    
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar__brand">
+        <img class="navbar__logo" src="/static/logo.svg" alt="Memoitlogo"/> Memoit
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Recent</a></li>
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calendrier</a></li>
+        </ul>
+    </header>
+    <main class="main">
+        <section>
+            <h1>Ajouter une nouvelle entrée</h1>
+            <form id="form" class="form" method="POST">
+                <p class="form__input">
+                    <label for="entry" class="form__label">Contenu :</label>
+                    <textarea name="content" id="entry" class="form__textarea" placeholder="Ecrivez ici"></textarea>
+                </p>
+                <button id="button" type="submit" class="form__submit">Poster</button>
+                <script src="/static/js/base.js"></script>
+            </form>
+        </section>
+        <section>
+            <h1>Ajouts récents</h1>
+            {% for entry in entries %}
+                <article class="entry">
+                    <div>
+                        <h2 class="entry__title">{{entry [0] | truncate(30, true) }}</h2>
+                        <time class="entry__date" datetime="{{entry[1]}}"> - {{entry[1]}}</time>
+                    </div>
+                    <p class="entrey__content">
+                        {{entry[0]}}
+                    </p>
+                </article>
+            {% endfor %}
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a class="footer__item" href="#">Made by Yannick Driever</a>
+                <a class="footer__item" href="#">Voir d'autres projets</a>
+            </section>
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item" href="#">Recent</a>
+                    <a class="footer__item" href="#">Calendrier</a>
+                </div>
+                <div class="footer__column">
+                    <a class="footer__item" href="#">About</a>
+                    <a class="footer__item" href="#">Comment cette app fonctionne</a>
+                </div>
+            </section>
+        </div>
+    
+    </footer>
+</body>
+</html>
